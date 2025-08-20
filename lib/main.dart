@@ -1,8 +1,10 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:project_flutter1/firebase_options.dart';
+import 'package:project_flutter1/register_view.dart';
+import 'package:project_flutter1/verify_email_view.dart';
+import 'package:project_flutter1/view/login_view.dart';
 
 //import 'package:project_flutter1/view/login_view.dart';
 void main() {
@@ -15,6 +17,11 @@ void main() {
            primarySwatch: Colors.blue,
         ),
       home: const HomePage(),
+     routes: {
+      '/login/': (context) => const LoginView(title: "Login"),
+            '/register/': (context) => const RegisterView(),
+
+     },
   ),
 );
 }
@@ -24,34 +31,34 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    return Scaffold(
-      appBar: AppBar(
-        
-        title: const Text('Home'),
-      ),
-      body: FutureBuilder(
+    return FutureBuilder(
         future:Firebase.initializeApp(
  options: DefaultFirebaseOptions.currentPlatform,
 ),
         builder:(context, snapshot){
           switch (snapshot.connectionState){
             case ConnectionState.done:
-            final user = FirebaseAuth.instance.currentUser;
-            if (user?.emailVerified ?? false){
-              print("you are a verified user");
-            
-            }
-            else{
-              print("you need verify your email first");
-            }
-            return const Text('Done');
-            default:
+           final user = FirebaseAuth.instance.currentUser;
+        if (user != null){
+          if(user.emailVerified){
+          print ("email is verified");
+        } else{
+          return const VerifyEmailView();
+        }
+        }else{
+          return const LoginView(title: "Login");
+        
+        }
+        return const Text('Done');
+
+       default:
           
-          return const Text('Loading....');
+          return const  CircularProgressIndicator();
           
           }
-  }
-  ), 
-   );
+  },
+  );
    }
    }
+   
+  
