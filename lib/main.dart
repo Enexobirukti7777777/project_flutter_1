@@ -17,13 +17,15 @@ void main() {
     MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        
-           primarySwatch: Colors.blue,
+    primarySwatch: Colors.blue,       
+          
         ),
       home: const HomePage(),
      routes: {
       '/login/': (context) => const LoginView(title: "Login"),
-            '/register/': (context) => const RegisterView(),
+      '/register/': (context) => const RegisterView(),
+      '/note/': (context) => const NoteView(),
+
 
      },
   ),
