@@ -44,27 +44,28 @@ class ServicesView extends StatelessWidget {
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
           children: [
-            ServiceCard(
-              title: "Hotels",
-              icon: Icons.hotel,
-              route: hotelsRoute,
-            ),
-            ServiceCard(
-              title: "Hospitals",
-              icon: Icons.local_hospital,
-              route: hospitalsRoute,
-            ),
-            ServiceCard(
-              title: "Government Offices",
-              icon: Icons.account_balance,
-              route: officesRoute,
-            ),
-            ServiceCard(
-              title: "City Views",
-              icon: Icons.panorama,
-              route: cityViewRoute,
-            ),
-          ],
+  ServiceCard(
+    title: "Hotels",
+    icon: Icons.hotel,
+    route: hotelsRoute,
+  ),
+  ServiceCard(
+    title: "Hospitals",
+    icon: Icons.local_hospital,
+    route: hospitalsRoute,
+  ),
+  ServiceCard(
+    title: "Government Offices",
+    icon: Icons.account_balance,
+    route: governmentOfficesRoute, // Updated
+  ),
+  ServiceCard(
+    title: "City Views",
+    icon: Icons.panorama,
+    route: cityViewsRoute, // Updated
+  ),
+
+      ],
         ),
       ),
     );

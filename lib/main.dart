@@ -6,8 +6,11 @@ import 'package:project_flutter1/firebase_options.dart';
 import 'package:project_flutter1/register_view.dart';
 import 'package:project_flutter1/verify_email_view.dart';
 import 'package:project_flutter1/view/login_view.dart';
+import 'package:project_flutter1/view/hotels_view.dart';
+import 'package:project_flutter1/view/hospitals_view.dart';
+import 'package:project_flutter1/view/offices_view.dart';
+import 'package:project_flutter1/view/city_view.dart';
 import 'package:project_flutter1/view/services_view.dart';
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
@@ -36,6 +39,10 @@ void main() {
         registerRoute: (context) => const RegisterView(),
         servicesRoute: (context) => const ServicesView(),
         verifyEmailRoute: (context) => const VerifyEmailView(),
+        hotelsRoute: (context) => const HotelsView(),
+        hospitalsRoute: (context) => const HospitalsView(),
+        governmentOfficesRoute: (context) => const OfficesView(),
+        cityViewsRoute: (context) => const CityView(),
       },
     ),
   );

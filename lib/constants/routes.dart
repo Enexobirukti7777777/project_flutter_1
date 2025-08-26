@@ -4,5 +4,5 @@ const servicesRoute = "/services/";
 const verifyEmailRoute = "/verifyEmail/";
 const hotelsRoute = "/hotels/";
 const hospitalsRoute = "/hospitals/";
-const officesRoute = "/offices/";
-const cityViewRoute = "/cityView/";
+const governmentOfficesRoute = "/offices/"; // Updated
+const cityViewsRoute = "/cityView/"; // Updated
