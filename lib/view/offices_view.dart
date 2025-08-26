@@ -6,15 +6,15 @@ class OfficesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final offices = [
-      {"name": "Adama City Administration", "image": "assets/office1.jpg"},
-      {"name": "Revenue Authority", "image": "assets/office2.jpg"},
-      {"name": "Municipal Court", "image": "assets/office3.jpg"},
-      {"name": "Health Bureau", "image": "assets/office4.jpg"},
-      {"name": "Education Office", "image": "assets/office5.jpg"},
-      {"name": "Transport Authority", "image": "assets/office6.jpg"},
-      {"name": "Water Supply Office", "image": "assets/office7.jpg"},
-      {"name": "Urban Planning Office", "image": "assets/office8.jpg"},
-      {"name": "Social Affairs Office", "image": "assets/office9.jpg"},
+      {"name": "ICS ", "image": "assets/office1.jpg"},
+      {"name": "Gumruk Authority", "image": "assets/office2.jpg"},
+      {"name": "Gebiwoch Court", "image": "assets/office3.jpg"},
+      {"name": "Post Office", "image": "assets/office4.jpg"},
+      {"name": "Electric Power Service", "image": "assets/office5.jpg"},
+      {"name": "Adama Science And Technology University", "image": "assets/office6.jpg"},
+      {"name": "Ethio Telecom Office", "image": "assets/office7.jpg"},
+      {"name": "Adama City Adminstration", "image": "assets/view1.jpg"},
+      {"name": "Medhen Office", "image": "assets/office9.jpg"},
       {"name": "Land Management Office", "image": "assets/office10.jpg"},
     ];
 
@@ -34,8 +34,8 @@ class OfficesView extends StatelessWidget {
             child: ListTile(
               leading: Image.asset(
                 offices[index]["image"]!,
-                width: 80,
-                height: 80,
+                width: 150,
+                height: 250,
                 fit: BoxFit.cover,
               ),
               title: Text(offices[index]["name"]!),

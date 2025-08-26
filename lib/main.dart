@@ -17,10 +17,10 @@ void main() {
     MaterialApp(
       title: 'Adama City Discovery',
       theme: ThemeData(
-        primaryColor: const Color.fromARGB(255, 87, 145, 231), // Royal blue
+        primaryColor: const Color.fromARGB(255, 29, 60, 104), 
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
-          backgroundColor: const Color.fromARGB(255, 87, 145, 231), // Royal blue
+          backgroundColor: Color.fromARGB(255, 29, 60, 104), 
           foregroundColor: Colors.white,
           elevation: 0,
         ),

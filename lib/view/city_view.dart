@@ -6,16 +6,16 @@ class CityView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final views = [
-      {"name": "Adama Skyline", "image": "assets/view1.jpg"},
-      {"name": "Wenji Bridge", "image": "assets/view2.jpg"},
-      {"name": "Adama Park", "image": "assets/view3.jpg"},
-      {"name": "Rift Valley View", "image": "assets/view4.jpg"},
-      {"name": "Main Street", "image": "assets/view5.jpg"},
-      {"name": "Cultural Center", "image": "assets/view6.jpg"},
-      {"name": "Sunset Point", "image": "assets/view7.jpg"},
-      {"name": "Market Square", "image": "assets/view8.jpg"},
-      {"name": "Historical Monument", "image": "assets/view9.jpg"},
-      {"name": "Adama Riverbank", "image": "assets/view10.jpg"},
+      {"name": "Adama city Administration", "image": "assets/view1.jpg"},
+      {"name": "Downtown", "image": "assets/view2.jpg"},
+      {"name": "Mafi Resturant", "image": "assets/view3.jpg"},
+      {"name": "Avica coffee", "image": "assets/view4.jpg"},
+      {"name": "Bole Street", "image": "assets/view5.jpg"},
+      {"name": "Franko Area", "image": "assets/view6.jpg"},
+      {"name": "Express Way", "image": "assets/view7.jpg"},
+      {"name": "Posta Bet Dashin Bank ", "image": "assets/view8.jpg"},
+      {"name": "Adama City Adminstration ", "image": "assets/view9.jpg"},
+      {"name": "Night View Warka", "image": "assets/view10.jpg"},
     ];
 
     return Scaffold(
@@ -34,8 +34,8 @@ class CityView extends StatelessWidget {
             child: ListTile(
               leading: Image.asset(
                 views[index]["image"]!,
-                width: 80,
-                height: 80,
+                width: 150,
+                height: 250,
                 fit: BoxFit.cover,
               ),
               title: Text(views[index]["name"]!),
