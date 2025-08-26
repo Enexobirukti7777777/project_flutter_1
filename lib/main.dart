@@ -1,147 +1,72 @@
-//import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:project_flutter1/constants/routes.dart';
-//import 'package:flutter/rendering.dart';
 import 'package:project_flutter1/firebase_options.dart';
 import 'package:project_flutter1/register_view.dart';
 import 'package:project_flutter1/verify_email_view.dart';
 import 'package:project_flutter1/view/login_view.dart';
-//import 'dart:developer' as devtools show log;
-
+import 'package:project_flutter1/view/services_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Adama City Discovery',
       theme: ThemeData(
-    primarySwatch: Colors.blue,       
-          
+        primaryColor: const Color.fromARGB(255, 87, 145, 231), // Royal blue
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: const Color.fromARGB(255, 87, 145, 231), // Royal blue
+          foregroundColor: Colors.white,
+          elevation: 0,
         ),
+        cardTheme: CardThemeData(
+          elevation: 4,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        ),
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(color: Colors.black87),
+          bodyMedium: TextStyle(color: Colors.black54),
+        ),
+      ),
       home: const HomePage(),
-     routes: {
-      loginRoute: (context) => const LoginView(title: "Login"),
-      registerRoute: (context) => const RegisterView(),
-      noteRoute: (context) => const NoteView(),
-
-
-     },
-  ),
-);
+      routes: {
+        loginRoute: (context) => const LoginView(title: "Login"),
+        registerRoute: (context) => const RegisterView(),
+        servicesRoute: (context) => const ServicesView(),
+        verifyEmailRoute: (context) => const VerifyEmailView(),
+      },
+    ),
+  );
 }
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    
     return FutureBuilder(
-        future:Firebase.initializeApp(
- options: DefaultFirebaseOptions.currentPlatform,
-),
-        builder:(context, snapshot){
-          switch (snapshot.connectionState){
-            case ConnectionState.done:
-           final user = FirebaseAuth.instance.currentUser;
-        if (user != null){
-          if(user.emailVerified){
-          print ("email is verified");
-        } else{
-          return const VerifyEmailView();
-        }                                                           
-        }else{
-          return const LoginView(title: "Login");
-        
-        }
-        return  const NoteView();
-
-       default:
-          
-          return const  CircularProgressIndicator();
-          
-          }
-  },
-  );
-   }
-   }
-   enum MenuAction { logout }
-   class NoteView extends StatefulWidget {
-  const NoteView({super.key});
-
-  @override
-  State<NoteView> createState() => _NoteViewState();
-}
-
-class _NoteViewState extends State<NoteView> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-      title: const Text ("Main UI"),
-      actions: [
-        PopupMenuButton<MenuAction>(
-          onSelected: (value) async {
-           switch (value){
-             case MenuAction.logout:
-              final shouldLogout = await showLogOutDialog(context) ; // TODO: Handle this case.
-              if (shouldLogout == true){
-                await FirebaseAuth.instance.signOut();
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  loginRoute, (_) => false,
-                  );
-
-              }
-           }
-          },
-  
-          
-        itemBuilder: (context) {
-          return const [
-
-            const PopupMenuItem<MenuAction>(value: MenuAction.logout,
-            child: Text("logout"),
-            ),
-
-          ];
-          
-  },
-  )
-      ],
+      future: Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
       ),
-      body: const Text("hello world"),
+      builder: (context, snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.done:
+            final user = FirebaseAuth.instance.currentUser;
+            if (user != null) {
+              if (user.emailVerified) {
+                return const ServicesView();
+              } else {
+                return const VerifyEmailView();
+              }
+            } else {
+              return const LoginView(title: "Login");
+            }
+          default:
+            return const Center(child: CircularProgressIndicator());
+        }
+      },
     );
-    
-    
   }
 }
-  Future<bool?> showLogOutDialog(BuildContext context){
-    return showDialog<bool>(
-      context: context,
-       builder: (context) {
-         return AlertDialog(
-          title: const Text("sign out"),
-          content: const Text("Are you sure you want to logout"),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(false);
-              }, 
-              child: const Text("cancel"),
-              ),
-              TextButton(
-              onPressed: (){
-                Navigator.of(context).pop(true);
-              }, 
-              child: const Text("Log out"),
-              ),
-          ],
-         );
-       },
-    );
-       
-      
-  }
-  
